@@ -1,4 +1,4 @@
-![Logo](img/logo.jpg)
+![Logo](img/uxd.jpg)
 
 # UXD Workshop
 

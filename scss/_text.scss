@@ -1,0 +1,20 @@
+.text {
+  font-family: $quicksand;
+  font-size: 16px;
+
+  &-small {
+    font-size: 14px;
+  }
+  &-medium {
+    font-size: 20px;
+  }
+  &-large {
+    font-size: 24px;
+  }
+  &-xlarge {
+    font-size: 36px;
+  }
+  &-huge {
+    font-size: 64px;
+  }
+}
