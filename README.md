@@ -21,7 +21,16 @@ Pertama-pertama pastikan bahwa anda telah memasang Ruby & Ruby SASS pada kompute
 
 ### Cara penggunaan
 
-Anda dapat langsung merubah content pada file **index.html** dan untuk mengkonversi file **SASS / SCSS** silahkan jalankan perintah berikut pada *Command Prompt / Terminal* :
+Silahkan *download* dahulu proyek ini dengan cara seperti berikut :
+
+- Menggunakan GIT via SSH :
+  `$ git clone git@github.com:muhibbudins/uxd-workshop.git`
+- Menggunakan GIT via HTTPS :
+  `$ git clone https://github.com/muhibbudins/uxd-workshop.git`
+- Men-*download* langsung dari *source* :
+  [Silahkan download disini](https://github.com/muhibbudins/uxd-workshop/archive/master.zip)
+
+Selanjutnya anda dapat langsung merubah content pada file **index.html** dan untuk mengkonversi file **SASS / SCSS** silahkan jalankan perintah berikut pada *Command Prompt / Terminal* :
 
 ``` bash
 $ sass --watch scss/main.scss:css/main.css
