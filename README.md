@@ -8,6 +8,7 @@ Proyek ini adalah *core skeleton* untuk workshop **UXD | PHP Indonesia** dan ske
 - Swiper 4.1.0
 - Animate CSS
 - Google Fonts (Quicksand & Lobster)
+- Ion Icons
 - jQuery 3.3.1
 - Easy Countdown
 
