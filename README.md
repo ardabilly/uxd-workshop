@@ -1,3 +1,5 @@
+![Logo](img/logo.jpg)
+
 # UXD Workshop
 
 Proyek ini adalah *core skeleton* untuk workshop **UXD | PHP Indonesia** dan skeleton ini telah berisi :
