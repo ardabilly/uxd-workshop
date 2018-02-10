@@ -1,1 +1,37 @@
-// do stuff
+.card {
+  background-color: transparentize($white, 0.85);
+  border-radius: 12px;
+  margin: 0.5rem;
+  padding: 18px 8px;
+  
+  &-active {
+    padding: 30px 8px;
+    background-color: transparentize($white, 0.6);
+  }
+  &-list {
+    display: flex;
+    align-items: center;
+  }
+  &-title {
+    color: $blue;
+  }
+  &-subtitle {
+    font-size: 15px;
+    color: transparentize($white, 0.25);
+  }
+
+  .nav {
+    min-height: 290px;
+    margin-top: 30px;
+
+    &-item {
+      padding: 12px 0;
+      font-size: 14px;
+      border-bottom: 1px solid transparentize($white, 0.85);
+    }
+    &-item:last-child {
+      border: 0;
+      margin-bottom: 20px;
+    }
+  }
+}
