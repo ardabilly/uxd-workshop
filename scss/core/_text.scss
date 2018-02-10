@@ -1,9 +1,11 @@
 .text {
   font-family: $quicksand;
-  font-size: 16px;
+  font-size: 14px;
+  color: transparentize($white, 0.2);
+  font-weight: 300;
 
   &-small {
-    font-size: 14px;
+    font-size: 16px;
   }
   &-medium {
     font-size: 20px;
@@ -16,5 +18,9 @@
   }
   &-huge {
     font-size: 64px;
+  }
+  &-icon {
+    font-size: 32px;
+    color: transparentize($white, 0.2);
   }
 }
