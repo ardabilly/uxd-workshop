@@ -21,7 +21,7 @@
   }
   &-outline {
     &-info {
-      background-color: $white;
+      background-color: transparent;
       color: $blue;
   
       @include hoverable();

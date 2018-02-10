@@ -19,4 +19,8 @@
   &-huge {
     font-size: 64px;
   }
+  &-icon {
+    font-size: 32px;
+    color: transparentize($white, 0.2);
+  }
 }

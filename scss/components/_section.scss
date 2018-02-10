@@ -1,10 +1,13 @@
 .section {
   width: 100%;
   min-height: 400px;
-  padding: 60px;
+  padding: 60px 0;
   color: $white;
 
   &-indigo {
     background-color: $indigo;
+  }
+  &-service {
+    background-color: $black;
   }
 }

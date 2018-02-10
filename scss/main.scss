@@ -1,18 +1,20 @@
 @import
 
 // core
-'color',
-'fonts',
-'text',
-'animate',
+'core/color',
+'core/fonts',
+'core/text',
+'core/animate',
+'core/responsive',
 
 // components
-'navbar',
-'hero',
-'section',
-'timer',
-'button',
-'card';
+'components/navbar',
+'components/hero',
+'components/section',
+'components/timer',
+'components/button',
+'components/card',
+'components/grid';
 
 // global style
 body {

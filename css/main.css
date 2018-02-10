@@ -13,6 +13,9 @@
     font-size: 36px; }
   .text-huge {
     font-size: 64px; }
+  .text-icon {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.8); }
 
 .delay-1 {
   animation-delay: 0.5s; }
@@ -32,6 +35,10 @@
 .delay-6 {
   animation-delay: 3s; }
 
+/* 
+  Responsive Breakpoints
+  Inspired by https://medium.com/developing-with-sass/creating-a-dead-simple-sass-mixin-to-handle-responsive-breakpoints-889927b37740
+*/
 .navbar {
   background-color: #000126; }
   .navbar-brand {
@@ -99,10 +106,12 @@
 .section {
   width: 100%;
   min-height: 400px;
-  padding: 60px;
+  padding: 60px 0;
   color: #FFFFFF; }
   .section-indigo {
     background-color: #000126; }
+  .section-service {
+    background-color: #090924; }
 
 .btn {
   padding: 10px 32px;
@@ -115,7 +124,7 @@
       border: 1px solid #1EB5EB;
       background-color: #14abe1; }
   .btn-outline-info {
-    background-color: #FFFFFF;
+    background-color: transparent;
     color: #1EB5EB; }
     .btn-outline-info:hover, .btn-outline-info:focus, .btn-outline-info:active {
       color: #FFFFFF;
@@ -129,6 +138,50 @@
       color: #FFFFFF;
       border: 1px solid #1EB5EB;
       background-color: #14abe1; }
+
+.grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .grid-item {
+    width: calc(100% / 3);
+    height: 300px;
+    position: relative;
+    overflow: hidden; }
+    .grid-item img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+      height: auto;
+      transition: all 0.8s ease; }
+    .grid-item:hover > .grid-overlay {
+      opacity: 1; }
+    .grid-item:hover > img {
+      filter: grayscale(100);
+      transform: scale(1.2) translateX(-40%) translateY(-40%); }
+  .grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(9, 9, 36, 0.6);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 60px;
+    opacity: 0;
+    transition: opacity 0.3s ease; }
+  .grid-title {
+    font-size: 28px; }
+  .grid-description {
+    font-size: 14px;
+    margin: 20px 0; }
 
 body {
   font-family: "Quicksand", sans-serif;
