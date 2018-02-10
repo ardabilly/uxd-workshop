@@ -1,0 +1,24 @@
+@import
+
+// core
+'core/color',
+'core/fonts',
+'core/text',
+'core/animate',
+'core/responsive',
+
+// components
+'components/navbar',
+'components/section',
+'components/button',
+'components/card',
+'components/countdown',
+'components/blockquote',
+'components/grid';
+
+// global style
+body {
+  font-family: $quicksand;
+  font-size: 16px;
+  background-color: $dark;
+}
