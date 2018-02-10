@@ -4,29 +4,19 @@
 'color',
 'fonts',
 'text',
+'animate',
 
 // components
 'navbar',
 'hero',
 'section',
 'timer',
+'button',
 'card';
 
 // global style
 body {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: $quicksand;
-
-  h1 {
-    font-size: 48px;
-    font-weight: 300;
-    color: #DADADA;
-  }
-  p {
-    font-size: 18px;
-  }
+  font-size: 16px;
+  background-color: $dark;
 }

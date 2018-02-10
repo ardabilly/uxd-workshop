@@ -1,1 +1,10 @@
-// do stuff
+.section {
+  width: 100%;
+  min-height: 400px;
+  padding: 60px;
+  color: $white;
+
+  &-indigo {
+    background-color: $indigo;
+  }
+}
