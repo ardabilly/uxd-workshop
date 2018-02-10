@@ -70,39 +70,6 @@
   -webkit-font-smoothing: antialiased;
   vertical-align: 0; }
 
-.hero {
-  width: 100%;
-  height: calc(100vh - 70px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url(../img/bg-hero.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative; }
-  .hero:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(2, 2, 33, 0.6);
-    z-index: 1; }
-  .hero-inner {
-    z-index: 10;
-    text-align: center;
-    color: #FFFFFF; }
-    .hero-inner img {
-      width: 390px;
-      height: auto; }
-    .hero-inner p {
-      margin: 20px 0; }
-  .hero-button {
-    margin-top: 40px; }
-    .hero-button .btn {
-      margin: 0 5px; }
-
 .section {
   width: 100%;
   min-height: 400px;
@@ -111,6 +78,80 @@
   .section-indigo {
     background-color: #000126; }
   .section-service {
+    background-color: #090924;
+    padding-bottom: 0; }
+  .section-overlay {
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/bg-hero.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; }
+    .section-overlay:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(2, 2, 33, 0.6);
+      z-index: 0; }
+    .section-overlay-inner {
+      z-index: 100;
+      text-align: center;
+      color: #FFFFFF; }
+      .section-overlay-inner img {
+        width: 390px;
+        height: auto; }
+      .section-overlay-inner p {
+        margin: 20px 0; }
+    .section-overlay-button {
+      margin-top: 40px; }
+      .section-overlay-button .btn {
+        margin: 0 5px; }
+    .section-overlay-voucher {
+      min-height: 400px;
+      height: auto;
+      background-image: url(../img/bg-promotion.jpeg); }
+      .section-overlay-voucher:before {
+        background-color: rgba(2, 2, 33, 0.75); }
+      .section-overlay-voucher p {
+        margin: 0; }
+    .section-overlay-client {
+      min-height: 400px;
+      height: auto;
+      background-image: url(../img/bg-client.jpeg);
+      background-position: center; }
+      .section-overlay-client:before {
+        background-color: rgba(2, 2, 33, 0.75); }
+      .section-overlay-client p {
+        margin: 0; }
+    .section-overlay-price {
+      min-height: 400px;
+      height: auto;
+      background-image: url(../img/bg-price.jpeg);
+      background-position: center;
+      padding: 60px 0; }
+      .section-overlay-price:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(2, 2, 33, 0.6);
+        z-index: 0; }
+      .section-overlay-price p {
+        margin: 0; }
+  .section-price {
+    padding: 0; }
+  .section-copyright {
+    min-height: 40px;
+    height: auto;
+    padding: 40px 0 20px 0;
     background-color: #090924; }
 
 .btn {
@@ -138,6 +179,58 @@
       color: #FFFFFF;
       border: 1px solid #1EB5EB;
       background-color: #14abe1; }
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .countdown-item {
+    font-size: 64px;
+    line-height: 1.2; }
+  .countdown-text {
+    font-size: 14px; }
+  .countdown-separator {
+    font-size: 36px;
+    margin: 0 20px; }
+
+.blockquote {
+  text-align: center;
+  position: relative; }
+  .blockquote:before, .blockquote:after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/quote-1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -20px;
+    left: -20px; }
+  .blockquote:after {
+    top: auto;
+    left: auto;
+    bottom: 20px;
+    right: 20px;
+    background-image: url(../img/quote-2.svg); }
+  .blockquote-user {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px; }
+  .blockquote-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-right: 20px; }
+    .blockquote-avatar img {
+      position: absolute;
+      width: auto;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%); }
 
 .grid {
   width: 100%;
