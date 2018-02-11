@@ -39,37 +39,6 @@
   Responsive Breakpoints
   Inspired by https://medium.com/developing-with-sass/creating-a-dead-simple-sass-mixin-to-handle-responsive-breakpoints-889927b37740
 */
-.navbar {
-  background-color: #000126; }
-  .navbar-brand {
-    font-size: 28;
-    font-family: "Lobster", cursive;
-    color: rgba(255, 255, 255, 0.8); }
-    .navbar-brand:hover, .navbar-brand:focus, .navbar-brand:active {
-      color: white; }
-  .navbar .nav-item {
-    padding: 8px 10px; }
-  .navbar .nav-link {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8); }
-    .navbar .nav-link:hover, .navbar .nav-link:focus, .navbar .nav-link:active {
-      color: white; }
-
-.dropdown-toggle:after {
-  border: 0;
-  content: "\f3d0";
-  display: inline-block;
-  font-family: "Ionicons";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  text-rendering: auto;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  vertical-align: 0; }
-
 .section {
   width: 100%;
   min-height: 400px;

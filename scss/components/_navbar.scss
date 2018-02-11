@@ -1,53 +1,53 @@
-// Hoverable Mixin
-@mixin hoverable() {
-  &:hover,
-  &:focus,
-  &:active {
-    color: transparentize($white, 0);
-  }
-}
+// // Hoverable Mixin
+// @mixin hoverable() {
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     color: transparentize($white, 0);
+//   }
+// }
 
-// Main navbar
-.navbar {
-  background-color: $indigo;
+// // Main navbar
+// .navbar {
+//   background-color: $indigo;
 
-  &-brand {
-    font-size: 28;
-    font-family: $lobster;
-    color: transparentize($white, 0.2);
+//   &-brand {
+//     font-size: 28;
+//     font-family: $lobster;
+//     color: transparentize($white, 0.2);
 
-    @include hoverable();
-  }
+//     @include hoverable();
+//   }
   
-  // Navbar item
-  .nav {
-    &-item {
-      padding: 8px 10px;
-    }
-    &-link {
-      font-size: 14px;
-      color: transparentize($white, 0.2);
+//   // Navbar item
+//   .nav {
+//     &-item {
+//       padding: 8px 10px;
+//     }
+//     &-link {
+//       font-size: 14px;
+//       color: transparentize($white, 0.2);
   
-      @include hoverable();
-    }
-  }
-}
+//       @include hoverable();
+//     }
+//   }
+// }
 
-// Dropdown Arrow
-.dropdown-toggle {
-  &:after {
-    border: 0;
-    content: "\f3d0";
-    display: inline-block;
-    font-family: "Ionicons";
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    text-rendering: auto;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    vertical-align: 0;
-  }
-}
+// // Dropdown Arrow
+// .dropdown-toggle {
+//   &:after {
+//     border: 0;
+//     content: "\f3d0";
+//     display: inline-block;
+//     font-family: "Ionicons";
+//     speak: none;
+//     font-style: normal;
+//     font-weight: normal;
+//     font-variant: normal;
+//     text-transform: none;
+//     text-rendering: auto;
+//     line-height: 1;
+//     -webkit-font-smoothing: antialiased;
+//     vertical-align: 0;
+//   }
+// }
