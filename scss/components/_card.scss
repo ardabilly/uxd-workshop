@@ -3,6 +3,7 @@
   border-radius: 12px;
   margin: 0.5rem;
   padding: 18px 8px;
+  width: 18rem;
   
   &-active {
     padding: 30px 8px;
@@ -11,6 +12,14 @@
   &-list {
     display: flex;
     align-items: center;
+
+    @include breakpoint(0, 768px) {
+      justify-content: center;
+    }
+
+    @include breakpoint(0, 480px) {
+      justify-content: inherit;
+    }
   }
   &-title {
     color: $blue;

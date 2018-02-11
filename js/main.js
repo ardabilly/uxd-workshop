@@ -25,4 +25,31 @@ $(document).ready(function() {
     }
   });
 
+  function duplicateNavbar(target, source) {
+    var clone = $(source).clone();
+    clone.removeClass('navbar-nav ml-auto');
+    clone.addClass('nav flex-column');
+
+    $(target).html(clone);
+  }
+
+  duplicateNavbar('.aside', '.navbar-nav');
+
+  $('.aside-toggle').click(function() {
+    $('.aside').addClass('aside-active');
+    $('.aside-overlay').addClass('aside-overlay-active');
+  });
+
+  $('.aside-overlay').click(function() {
+    $('.aside').removeClass('aside-active');
+    $('.aside-overlay').removeClass('aside-overlay-active');
+  });
+
+  if ($(window).width() <= 480) {
+    new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      centeredSlides: true
+    })
+  }
 });

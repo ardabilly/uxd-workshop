@@ -1,3 +1,7 @@
+/* 
+  Responsive Breakpoints
+  Inspired by https://medium.com/developing-with-sass/creating-a-dead-simple-sass-mixin-to-handle-responsive-breakpoints-889927b37740
+*/
 .text {
   font-family: "Quicksand", sans-serif;
   font-size: 14px;
@@ -11,6 +15,9 @@
     font-size: 24px; }
   .text-xlarge {
     font-size: 36px; }
+    @media (max-width: 480px) {
+      .text-xlarge {
+        font-size: 28px; } }
   .text-huge {
     font-size: 64px; }
   .text-icon {
@@ -35,10 +42,6 @@
 .delay-6 {
   animation-delay: 3s; }
 
-/* 
-  Responsive Breakpoints
-  Inspired by https://medium.com/developing-with-sass/creating-a-dead-simple-sass-mixin-to-handle-responsive-breakpoints-889927b37740
-*/
 .navbar {
   background-color: #000126; }
   .navbar-brand {
@@ -54,6 +57,17 @@
     color: rgba(255, 255, 255, 0.8); }
     .navbar .nav-link:hover, .navbar .nav-link:focus, .navbar .nav-link:active {
       color: white; }
+  .navbar .aside-toggle {
+    font-family: inherit;
+    display: none;
+    font-size: 28px; }
+  @media (max-width: 768px) {
+    .navbar {
+      justify-content: space-between; }
+      .navbar .aside-toggle {
+        display: block; }
+      .navbar-nav {
+        display: none; } }
 
 .dropdown-toggle:after {
   border: 0;
@@ -90,6 +104,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative; }
+    @media (max-width: 768px) {
+      .section-overlay {
+        height: 600px; } }
     .section-overlay:before {
       content: '';
       position: absolute;
@@ -106,6 +123,9 @@
       .section-overlay-inner img {
         width: 390px;
         height: auto; }
+        @media (max-width: 480px) {
+          .section-overlay-inner img {
+            width: 280px; } }
       .section-overlay-inner p {
         margin: 20px 0; }
     .section-overlay-button {
@@ -130,6 +150,10 @@
       display: flex;
       align-items: center;
       justify-content: center; }
+      @media (max-width: 768px) {
+        .section-overlay-price {
+          min-height: 200px;
+          background-size: cover; } }
       .section-overlay-price:before {
         content: '';
         position: absolute;
@@ -152,6 +176,10 @@
         margin: 0; }
   .section-price {
     padding: 0; }
+  @media (max-width: 768px) {
+    .section-footer .col-12 {
+      text-align: center;
+      margin-bottom: 30px; } }
   .section-copyright {
     min-height: 40px;
     height: auto;
@@ -162,6 +190,11 @@
   padding: 10px 32px;
   border-radius: 30px;
   border: 1px solid #1EB5EB; }
+  @media (max-width: 480px) {
+    .btn {
+      padding: 8px 28px;
+      margin: 10px 0;
+      font-size: 14px; } }
   .btn-info {
     background-color: #1EB5EB; }
     .btn-info:hover, .btn-info:focus, .btn-info:active {
@@ -188,13 +221,20 @@
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   margin: 0.5rem;
-  padding: 18px 8px; }
+  padding: 18px 8px;
+  width: 18rem; }
   .card-active {
     padding: 30px 8px;
     background-color: rgba(255, 255, 255, 0.4); }
   .card-list {
     display: flex;
     align-items: center; }
+    @media (max-width: 768px) {
+      .card-list {
+        justify-content: center; } }
+    @media (max-width: 480px) {
+      .card-list {
+        justify-content: inherit; } }
   .card-title {
     color: #1EB5EB; }
   .card-subtitle {
@@ -215,14 +255,24 @@
   display: flex;
   align-items: center;
   justify-content: center; }
+  @media (max-width: 480px) {
+    .countdown {
+      margin-top: 20px; } }
   .countdown-item {
     font-size: 64px;
     line-height: 1.2; }
+    @media (max-width: 480px) {
+      .countdown-item {
+        font-size: 32px; } }
   .countdown-text {
     font-size: 14px; }
   .countdown-separator {
     font-size: 36px;
     margin: 0 20px; }
+    @media (max-width: 480px) {
+      .countdown-separator {
+        margin: 0 10px;
+        font-size: 28px; } }
 
 .blockquote {
   text-align: center;
@@ -237,6 +287,9 @@
     position: absolute;
     top: -20px;
     left: -20px; }
+    @media (max-width: 480px) {
+      .blockquote:before, .blockquote:after {
+        content: none; } }
   .blockquote:after {
     top: auto;
     left: auto;
@@ -248,6 +301,9 @@
     width: 40%;
     margin: 0 auto;
     margin-top: 20px; }
+    @media (max-width: 480px) {
+      .blockquote-user {
+        width: 60%; } }
   .blockquote-avatar {
     width: 40px;
     height: 40px;
@@ -272,6 +328,13 @@
     height: 300px;
     position: relative;
     overflow: hidden; }
+    @media (max-width: 768px) {
+      .grid-item {
+        width: calc(100% / 2);
+        height: 250px; } }
+    @media (max-width: 480px) {
+      .grid-item {
+        height: 190px; } }
     .grid-item img {
       position: absolute;
       top: 50%;
@@ -280,11 +343,17 @@
       width: 100%;
       height: auto;
       transition: all 0.8s ease; }
+      @media (max-width: 480px) {
+        .grid-item img {
+          transform: scale(1.6) translateX(-30%) translateY(-30%); } }
     .grid-item:hover > .grid-overlay {
       opacity: 1; }
     .grid-item:hover > img {
       filter: grayscale(100);
       transform: scale(1.2) translateX(-40%) translateY(-40%); }
+      @media (max-width: 480px) {
+        .grid-item:hover > img {
+          transform: scale(1.8) translateX(-30%) translateY(-30%); } }
   .grid-overlay {
     position: absolute;
     top: 0;
@@ -301,15 +370,60 @@
     padding: 0 60px;
     opacity: 0;
     transition: opacity 0.3s ease; }
+    @media (max-width: 480px) {
+      .grid-overlay {
+        padding: 0; } }
   .grid-title {
     font-size: 28px; }
+    @media (max-width: 480px) {
+      .grid-title {
+        font-size: 18px; } }
   .grid-description {
     font-size: 14px;
     margin: 20px 0; }
+    @media (max-width: 480px) {
+      .grid-description {
+        display: none; } }
+
+.aside {
+  width: 300px;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  height: 100vh;
+  background-color: #000126;
+  z-index: 0;
+  transition: all 0.6s ease-in-out; }
+  .aside-active {
+    left: 0;
+    z-index: 1001; }
+  .aside-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(9, 9, 36, 0.8);
+    opacity: 0;
+    transition: all 0.3s ease-in-out; }
+    .aside-overlay-active {
+      opacity: 1;
+      z-index: 1000; }
+  .aside .nav-item {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
+  .aside .nav-item:last-child {
+    border: 0; }
+  .aside .nav-link {
+    color: #FFFFFF; }
 
 body {
   font-family: "Quicksand", sans-serif;
   font-size: 16px;
   background-color: #020221; }
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px; } }
 
 /*# sourceMappingURL=main.css.map */

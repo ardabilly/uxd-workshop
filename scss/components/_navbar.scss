@@ -31,6 +31,21 @@
       @include hoverable();
     }
   }
+  .aside-toggle {
+    font-family: inherit;
+    display: none;
+    font-size: 28px;
+  }
+  @include breakpoint(0, 768px) {
+    justify-content: space-between;
+
+    .aside-toggle {
+      display: block;
+    }
+    &-nav {
+      display: none;
+    }
+  }
 }
 
 // Dropdown Arrow

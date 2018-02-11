@@ -746,7 +746,7 @@ Lalu untuk pertama silahkan tambahkan code HTML berikut setelah bagian **voucher
         </div>
         <div class="col-8 p-5 text-center">
           <div class="card-list">
-              <div class="card card-active" style="width: 18rem;">
+              <div class="card card-active">
                 <div class="card-body">
                   <h5 class="card-title">Standard Plan</h5>
                   <div class="card-subtitle">(Recommended)</div>
@@ -770,7 +770,7 @@ Lalu untuk pertama silahkan tambahkan code HTML berikut setelah bagian **voucher
                   <a href="#" class="btn btn-info">IDR 350K</a>
                 </div>
               </div>
-              <div class="card" style="width: 18rem;">
+              <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Exclusive Plan</h5>
                   <ul class="nav flex-column">
@@ -853,6 +853,7 @@ Terakhir kita tambahkan style untuk bagian card-nya dengan menambahkan code beri
   border-radius: 12px;
   margin: 0.5rem;
   padding: 18px 8px;
+  width: 18rem;
   
   &-active {
     padding: 30px 8px;
@@ -1015,7 +1016,7 @@ Code-nya cukup simple kalian hanya cukup menambahkan code berikut pada file **in
 
 ```html
   <!-- Footer -->
-  <section class="section">
+  <section class="section section-footer">
     <div class="container">
       <div class="row">
         <div class="col-4">
@@ -1112,9 +1113,657 @@ Dan akhirnya kita telah selesai membuat sebuah halaman sesuai dengan desain yang
 
 # Memperbaiki Responsive Design
 
-Sebagai tambahan agar desain kita sesuai dengan tampilan desain mobile, kita akan coba merapikan bagian template untuk bagian mobile. Pertama silahkan buka proyek dalam mode mobile device.
+Sebagai tambahan agar desain kita sesuai dengan tampilan desain mobile, kita akan coba merapikan bagian template untuk bagian mobile dengan menggunakan **mixin breakpoint** yang telah kita punya. 
+
+Pertama silahkan buka proyek dalam mode mobile device.
 
 > Jika kamu menggunakan Google Chrome silahkan klik kanan > inspect element lalu pilih bagian **Toogle device toolbar**
+
+#### Membuat Aside & Aside Toggle
+
+Selanjutnya jika kamu perhatikan bagian navbar adalah bagian pertama yang terlihat berantakan maka dari itu, kita akan coba menghilangkan menu navbar bagian kanan atas dan akan kita pindahkan ke bagian aside di sebelah kiri. Akan ada beberapa file yang akan kita rubah, untuk pertama silahkan rubah isi dari file **component/main.scss** menjadi seperti berikut :
+
+```scss
+@import
+
+// core
+'core/responsive',
+'core/color',
+'core/fonts',
+'core/text',
+'core/animate',
+
+// components
+'components/navbar',
+'components/section',
+'components/button',
+'components/card',
+'components/countdown',
+'components/blockquote',
+'components/grid',
+'components/aside';
+
+// global style
+body {
+  font-family: $quicksand;
+  font-size: 16px;
+  background-color: $dark;
+
+  @include breakpoint(0, 480px) {
+    font-size: 14px;
+  }
+}
+```
+
+Selanjutnya kita ganti bagian **navbar-brand** pada navbar menjadi seperti berikut :
+
+```html
+      <a class="navbar-brand aside-toggle" href="#"><i class="ion-navicon-round"></i></a>
+      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand additional" href="#">&nbsp;</a>
+```
+
+Serta code berikut sebelum section <!~~ Hero ~~> :
+
+```html
+  <!-- Aside -->
+  <section class="aside"></section>
+
+  <!-- Aside Overlay -->
+  <section class="aside-overlay"></section>
+```
+
+Lalu tambahkan code berikut pada bagian **.navbar** pada file **component/navbar.scss** :
+
+```scss
+  .aside-toggle {
+    font-family: inherit;
+    display: none;
+    font-size: 28px;
+  }
+  @include breakpoint(0, 768px) {
+    justify-content: space-between;
+
+    .aside-toggle {
+      display: block;
+    }
+    &-nav {
+      display: none;
+    }
+  }
+```
+
+Setelah itu masukan code berikut sebagai style utama pada component aside di atas pada file **component/_aside.scss** :
+
+```scss
+// _aside.scss
+
+.aside {
+  width: 300px;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  height: 100vh;
+  background-color: $indigo;
+  z-index: 0;
+  transition: all 0.6s ease-in-out;
+
+  &-active {
+    left: 0;
+    z-index: 1001;
+  }
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: transparentize($black, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    &-active {
+      opacity: 1;
+      z-index: 1000;
+    }
+  }
+  .nav {
+    &-item {
+      padding: 20px;
+      border-bottom: 1px solid transparentize($white, 0.75);
+    }
+    &-item:last-child {
+      border: 0;
+    }
+    &-link {
+      color: $white;
+    }
+  }
+}
+```
+
+Sebagai pelengkap tambahkan code berikut pada file **js/main.js** untuk mengaktifkan aside :
+
+```javascript
+  function duplicateNavbar(target, source) {
+    var clone = $(source).clone();
+    clone.removeClass('navbar-nav ml-auto');
+    clone.addClass('nav flex-column');
+
+    $(target).html(clone);
+  }
+
+  duplicateNavbar('.aside', '.navbar-nav');
+
+  $('.aside-toggle').click(function() {
+    $('.aside').addClass('aside-active');
+    $('.aside-overlay').addClass('aside-overlay-active');
+  });
+
+  $('.aside-overlay').click(function() {
+    $('.aside').removeClass('aside-active');
+    $('.aside-overlay').removeClass('aside-overlay-active');
+  });
+```
+
+#### Memperbaiki Overlaping
+
+Ada beberapa content pada template yang menjadi overlap pada kondisi mobile / tablet di karenakan ukurannya yang terlalu besar atau bertumpukan. Maka dari itu kita akan merubah banyak file pada bagian ini, silahkan ikuti secara berurutan bagian mana yang akan kita rubah.
+
+##### File index.html
+
+###### Section Introduction
+
+Kita perbaiki bagian introduction, silahkan rubah code berikut :
+
+```html
+<div class="col-9 mx-auto text-center">
+```
+
+Menjadi seperti ini 
+
+```html
+<div class="col-12 col-sm-9 mx-auto text-center">
+```
+
+###### Section Price
+
+Kita perbaiki bagian Price, silahkan rubah code berikut :
+
+```html
+        <div class="col-4 text-center section section-overlay-price">
+          <div class="section-overlay-inner">
+            <div class="text-xlarge mb-4">Table Prices</div>
+            <p class="animated delay-1 fadeInUp">Ullam fugiat illo laborum similique repellat <br> quisquam ut aut debitis  quam quas <br> voluptatibus.</p>
+          </div>
+        </div>
+        <div class="col-8 p-5 text-center">
+          <div class="card-list">
+              <div class="card card-active">
+```
+
+Menjadi seperti ini 
+
+```html
+        <div class="col-12 col-lg-4 text-center section section-overlay-price">
+          <div class="section-overlay-inner">
+            <div class="text-xlarge mb-4">Table Prices</div>
+            <p class="animated delay-1 fadeInUp">Ullam fugiat illo laborum similique repellat <br> quisquam ut aut debitis  quam quas <br> voluptatibus.</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-8 p-5 text-center swiper-container">
+          <div class="card-list swiper-wrapper">
+              <div class="card card-active swiper-slide">
+```
+
+Serta code berikut :
+
+```html
+<div class="card">
+```
+
+Menjadi
+
+```html
+<div class="card swiper-slide">
+```
+
+###### Section Client Says
+
+Kita perbaiki bagian Client Says, silahkan rubah code berikut :
+
+```html
+<div class="col-7 mx-auto text-center">
+```
+
+Menjadi seperti ini 
+
+```html
+<div class="col-12 col-sm-9 col-lg-7 mx-auto text-center">
+```
+
+###### Section Footer
+
+Kita perbaiki bagian Footer, silahkan rubah code berikut :
+
+```html
+  <!-- Footer -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="text-medium mb-3">About Us</div>
+          <p class="text">Exercitationem culpa alias et sint minus, repellat error reprehenderit ipsum ipsam voluptates quaerat. Expedita sapiente a quidem adipisci porro et, reprehenderit laborum. Ipsam minus hic nostrum voluptatum dolores ipsa voluptatibus dignissimos, voluptate distinctio quasi nam libero cupiditate quisquam, id itaque, harum ab asperiores. Reiciendis?</p>
+        </div>
+        <div class="col-4">
+          <div class="text-medium mb-3 ml-3">Our Services</div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Repellat error reprehenderit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Ipsum ipsam voluptates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Quaerat expedita sapiente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Quidem adipisci porro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Reprehenderit laborum</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Ipsam minus hic nostrum</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-4">
+```
+
+Menjadi seperti ini
+
+```html
+  <!-- Footer -->
+  <section class="section section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-4">
+          <div class="text-medium mb-3">About Us</div>
+          <p class="text">Exercitationem culpa alias et sint minus, repellat error reprehenderit ipsum ipsam voluptates quaerat. Expedita sapiente a quidem adipisci porro et, reprehenderit laborum. Ipsam minus hic nostrum voluptatum dolores ipsa voluptatibus dignissimos, voluptate distinctio quasi nam libero cupiditate quisquam, id itaque, harum ab asperiores. Reiciendis?</p>
+        </div>
+        <div class="col-6 col-lg-4">
+          <div class="text-medium mb-3 ml-3">Our Services</div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Repellat error reprehenderit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Ipsum ipsam voluptates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Quaerat expedita sapiente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Quidem adipisci porro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Reprehenderit laborum</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Ipsam minus hic nostrum</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-4">
+```
+
+##### File components/_blockquote.scss
+
+Silahkan rubah isi dari file **_blockquote.scss** menjadi seperti berikut :
+
+```scss
+.blockquote {
+  text-align: center;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/quote-1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+
+    @include breakpoint(0, 480px) {
+      content: none;
+    }
+  }
+  &:after {
+    top: auto;
+    left: auto;
+    bottom: 20px;
+    right: 20px;
+    background-image: url(../img/quote-2.svg);
+  }
+
+  &-user {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    @include breakpoint(0, 480px) {
+      width: 60%;
+    }
+  }
+  &-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-right: 20px;
+
+    img {
+      position: absolute;
+      width: auto;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+```
+
+##### File components/_button.scss
+
+Tambahan di bagian .btn sebelum **&-info {** :
+
+```scss
+  @include breakpoint(0, 480px) {
+    padding: 8px 28px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+```
+
+##### File components/_card.scss
+
+Silahkan rubah isi dari file **_card.scss** menjadi seperti berikut :
+
+```scss
+.card {
+  background-color: transparentize($white, 0.85);
+  border-radius: 12px;
+  margin: 0.5rem;
+  padding: 18px 8px;
+  width: 18rem;
+  
+  &-active {
+    padding: 30px 8px;
+    background-color: transparentize($white, 0.6);
+  }
+  &-list {
+    display: flex;
+    align-items: center;
+
+    @include breakpoint(0, 768px) {
+      justify-content: center;
+    }
+
+    @include breakpoint(0, 480px) {
+      justify-content: inherit;
+    }
+  }
+  &-title {
+    color: $blue;
+  }
+  &-subtitle {
+    font-size: 15px;
+    color: transparentize($white, 0.25);
+  }
+
+  .nav {
+    min-height: 290px;
+    margin-top: 30px;
+
+    &-item {
+      padding: 12px 0;
+      font-size: 14px;
+      border-bottom: 1px solid transparentize($white, 0.85);
+    }
+    &-item:last-child {
+      border: 0;
+      margin-bottom: 20px;
+    }
+  }
+}
+```
+
+##### File components/_countdown.scss
+
+Silahkan rubah isi dari file **_countown.scss** menjadi seperti berikut :
+
+```scss
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(0, 480px) {
+    margin-top: 20px;
+  }
+  &-item {
+    font-size: 64px;
+    line-height: 1.2;
+
+    @include breakpoint(0, 480px) {
+      font-size: 32px;
+    }
+  }
+  &-text {
+    font-size: 14px;
+  }
+  &-separator {
+    font-size: 36px;
+    margin: 0 20px;
+
+    @include breakpoint(0, 480px) {
+      margin: 0 10px;
+      font-size: 28px;
+    }
+  }
+}
+```
+
+##### File components/_grid.scss
+
+Silahkan rubah isi dari file **_grid.scss** menjadi seperti berikut :
+
+```scss
+.grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  &-item {
+    width: calc(100% / 3);
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+
+    @include breakpoint(0, 768px) {
+      width: calc(100% / 2);
+      height: 250px;
+    }
+    @include breakpoint(0, 480px) {
+      height: 190px;
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+      height: auto;
+      transition: all 0.8s ease;
+
+      @include breakpoint(0, 480px) {
+        transform: scale(1.6) translateX(-30%) translateY(-30%);
+      }
+    }
+    &:hover > .grid-overlay {
+      opacity: 1;
+    }
+    &:hover > img {
+      filter: grayscale(100);
+      transform: scale(1.2) translateX(-40%) translateY(-40%);
+
+      @include breakpoint(0, 480px) {
+        transform: scale(1.8) translateX(-30%) translateY(-30%);
+      }
+    }
+  }
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: transparentize($black, 0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 60px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    @include breakpoint(0, 480px) {
+      padding: 0;
+    }
+  }
+  &-title {
+    font-size: 28px;
+
+    @include breakpoint(0, 480px) {
+      font-size: 18px;
+    }
+  }
+  &-description {
+    font-size: 14px;
+    margin: 20px 0;
+
+    @include breakpoint(0, 480px) {
+      display: none;
+    }
+  }
+}
+```
+
+
+##### File components/_section.scss
+
+Pada bagian ini kita akan banyak menambahkan class baru pada beberapa bagian, di antaranya silahkan rubah bagian berikut :
+
+Tambahan di bagian &-overlay sebelum **&:before** :
+
+```scss
+    @include breakpoint(0, 768px) {
+      height: 600px;
+    }
+```
+
+Perubahan pada bagian img dari :
+
+```scss
+      img {
+        width: 390px;
+        height: auto
+      }
+```
+
+Menjadi seperti ini :
+
+```scss
+      img {
+        width: 390px;
+        height: auto;
+
+        @include breakpoint(0, 480px) {
+          width: 280px;
+        }
+      }
+```
+
+Tambahan di bagian &-price sebelum **&:before** :
+
+```scss
+      @include breakpoint(0, 768px) {
+        min-height: 200px;
+        background-size: cover;
+      }
+```
+
+Tambahan bagian footer sebelum **&-copyright {**:
+
+```scss
+  &-footer {
+    @include breakpoint(0, 768px) {
+      .col-12 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    }
+  }
+```
+
+##### File components/_text.scss
+
+Pada bagian text kita rubah sedikit font-size pada class x-large di mode mobile, silahkan rubah code berikut :
+
+```scss
+
+  &-xlarge {
+    font-size: 36px;
+  }
+```
+
+Menjadi seperti berikut :
+
+```scss
+
+  &-xlarge {
+    font-size: 36px;
+
+    @include breakpoint(0, 480px) {
+      font-size: 28px;
+    }
+  }
+```
+
+#### Menjalankan Swiper
+
+Terakhir silahkan tambahkan code berikut pada file **js/main.js** 
+
+```javascript
+  if ($(window).width() <= 480) {
+    new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      centeredSlides: true
+    })
+  }
+```
 
 # Penutup
 

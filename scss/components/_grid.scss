@@ -9,6 +9,13 @@
     position: relative;
     overflow: hidden;
 
+    @include breakpoint(0, 768px) {
+      width: calc(100% / 2);
+      height: 250px;
+    }
+    @include breakpoint(0, 480px) {
+      height: 190px;
+    }
     img {
       position: absolute;
       top: 50%;
@@ -17,6 +24,10 @@
       width: 100%;
       height: auto;
       transition: all 0.8s ease;
+
+      @include breakpoint(0, 480px) {
+        transform: scale(1.6) translateX(-30%) translateY(-30%);
+      }
     }
     &:hover > .grid-overlay {
       opacity: 1;
@@ -24,6 +35,10 @@
     &:hover > img {
       filter: grayscale(100);
       transform: scale(1.2) translateX(-40%) translateY(-40%);
+
+      @include breakpoint(0, 480px) {
+        transform: scale(1.8) translateX(-30%) translateY(-30%);
+      }
     }
   }
   &-overlay {
@@ -42,12 +57,24 @@
     padding: 0 60px;
     opacity: 0;
     transition: opacity 0.3s ease;
+
+    @include breakpoint(0, 480px) {
+      padding: 0;
+    }
   }
   &-title {
     font-size: 28px;
+
+    @include breakpoint(0, 480px) {
+      font-size: 18px;
+    }
   }
   &-description {
     font-size: 14px;
     margin: 20px 0;
+
+    @include breakpoint(0, 480px) {
+      display: none;
+    }
   }
 }

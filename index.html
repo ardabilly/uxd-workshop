@@ -41,7 +41,9 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">  
     <div class="container">
+      <a class="navbar-brand aside-toggle" href="#"><i class="ion-navicon-round"></i></a>
       <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand additional" href="#">&nbsp;</a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
@@ -68,6 +70,12 @@
     </div>
   </nav>
 
+  <!-- Aside -->
+  <section class="aside"></section>
+
+  <!-- Aside Overlay -->
+  <section class="aside-overlay"></section>
+
   <!-- Hero -->
   <section class="section section-overlay">
     <div class="section-overlay-inner">
@@ -84,7 +92,7 @@
   <section class="section section-indigo">
     <div class="container">
       <div class="row">
-        <div class="col-9 mx-auto text-center">
+        <div class="col-12 col-sm-9 mx-auto text-center">
           <div class="text-xlarge mb-4">The Photograph</div>
           <p class="text">Accusamus quisquam fugit tempora distinctio sint reprehenderit optio quos similique vitae consectetur? Molestiae est aspernatur eos totam consectetur quia sit neque delectus. Iusto iure facere provident doloribus unde excepturi ipsum beatae et distinctio commodi culpa harum ea dolore quibusdam, voluptatibus autem necessitatibus eaque deleniti. Dolores maiores atque necessitatibus sequi laboriosam odit blanditiis, qui recusandae molestiae unde. </p>
           <p class="text">Dolore est minus atque reiciendis ratione quis natus veritatis, nisi. Distinctio asperiores itaque ex. Quam sunt consequatur aut dolorem expedita aliquam, saepe minima vitae in enim, illum harum suscipit voluptatum nostrum quo? Autem consectetur, minima reprehenderit hic, corporis tempore cumque a doloribus! Accusamus, illum sapiente tenetur impedit deleniti! Recusandae qui animi reprehenderit ipsum quo? Dolor suscipit autem dolorem obcaecati inventore perspiciatis atque omnis, id sit. Maiores harum accusamus dolor, sint repudiandae eveniet nam, dolore iusto maxime.</p>
@@ -188,15 +196,15 @@
   <section class="section section-price">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-4 text-center section section-overlay-price">
+        <div class="col-12 col-lg-4 text-center section section-overlay-price">
           <div class="section-overlay-inner">
             <div class="text-xlarge mb-4">Table Prices</div>
             <p class="animated delay-1 fadeInUp">Ullam fugiat illo laborum similique repellat <br> quisquam ut aut debitis  quam quas <br> voluptatibus.</p>
           </div>
         </div>
-        <div class="col-8 p-5 text-center">
-          <div class="card-list">
-              <div class="card card-active" style="width: 18rem;">
+        <div class="col-12 col-lg-8 p-5 text-center swiper-container">
+          <div class="card-list swiper-wrapper">
+              <div class="card card-active swiper-slide">
                 <div class="card-body">
                   <h5 class="card-title">Standard Plan</h5>
                   <div class="card-subtitle">(Recommended)</div>
@@ -220,7 +228,7 @@
                   <a href="#" class="btn btn-info">IDR 350K</a>
                 </div>
               </div>
-              <div class="card" style="width: 18rem;">
+              <div class="card swiper-slide">
                 <div class="card-body">
                   <h5 class="card-title">Exclusive Plan</h5>
                   <ul class="nav flex-column">
@@ -256,7 +264,7 @@
   <section class="section section-overlay section-overlay-client">
     <div class="container">
       <div class="row">
-        <div class="col-7 mx-auto text-center">
+        <div class="col-12 col-sm-9 col-lg-7 mx-auto text-center">
           <div class="text-xlarge mb-4">Client Says</div>
           <div class="blockquote">
             <p class="text">Neque quia iure amet ad nemo, ex! Porro, totam corporis fugit aliquam assumenda, alias omnis adipisci voluptatum voluptas maiores facere ducimus velit. Nihil corporis commodi tempore doloremque assumenda, rerum! Ipsa voluptatibus ratione, reprehenderit explicabo, ad distinctio, voluptates alias, numquam fuga animi vel dolores minima. Dolorum similique, maxime voluptatum rerum eius beatae.</p>
@@ -273,14 +281,14 @@
   </section>
 
   <!-- Footer -->
-  <section class="section">
+  <section class="section section-footer">
     <div class="container">
       <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <div class="text-medium mb-3">About Us</div>
           <p class="text">Exercitationem culpa alias et sint minus, repellat error reprehenderit ipsum ipsam voluptates quaerat. Expedita sapiente a quidem adipisci porro et, reprehenderit laborum. Ipsam minus hic nostrum voluptatum dolores ipsa voluptatibus dignissimos, voluptate distinctio quasi nam libero cupiditate quisquam, id itaque, harum ab asperiores. Reiciendis?</p>
         </div>
-        <div class="col-4">
+        <div class="col-6 col-lg-4">
           <div class="text-medium mb-3 ml-3">Our Services</div>
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -303,7 +311,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-4">
+        <div class="col-6 col-lg-4">
           <div class="text-medium mb-3 ml-3">Social Account</div>
           <nav class="nav p0 m0">
             <a class="nav-link nav-social text-icon" href="#">

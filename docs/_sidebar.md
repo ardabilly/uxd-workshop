@@ -15,4 +15,7 @@
   - [Membuat Section Footer](?id=membuat-section-footer)
   - [Membuat Copyright](?id=membuat-copyright)
 - [Memperbaiki Responsive Design](?id=memperbaiki-responsive-design)
+  - [Membuat Aside & Aside Toggle](?id=membuat-aside-amp-aside-toggle)
+  - [Memperbaiki Overlaping](?id=memperbaiki-overlaping)
+  - [Menjalankan Swiper](?id=menjalankan-swiper)
 - [Penutup](?id=penutup)

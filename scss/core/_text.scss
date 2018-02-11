@@ -15,6 +15,10 @@
   }
   &-xlarge {
     font-size: 36px;
+
+    @include breakpoint(0, 480px) {
+      font-size: 28px;
+    }
   }
   &-huge {
     font-size: 64px;
