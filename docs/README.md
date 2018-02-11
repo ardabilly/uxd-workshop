@@ -807,7 +807,7 @@ Dan kira-kira seperti ini hasilnya.
 
 ![Price Before](_media/price-before.png)
 
-Selanjutnya kita tambahkan code berikut di dalam code **&-overlay** pada file **component/_section.scss** untuk membuat overlay pada bagian sebelah kiri.
+Selanjutnya kita tambahkan code berikut di dalam code **&-overlay** pada file **components/_section.scss** untuk membuat overlay pada bagian sebelah kiri.
 
 ```scss
     &-price {
@@ -837,7 +837,7 @@ Selanjutnya kita tambahkan code berikut di dalam code **&-overlay** pada file **
     }
 ```
 
-Serta tambahkan juga code berikut setelah code **&-overlay** pada file **component/_section.scss** untuk menghilangkan padding pada bagian section price.
+Serta tambahkan juga code berikut setelah code **&-overlay** pada file **components/_section.scss** untuk menghilangkan padding pada bagian section price.
 
 ```scss
   &-price {
@@ -845,7 +845,7 @@ Serta tambahkan juga code berikut setelah code **&-overlay** pada file **compone
   }
 ```
 
-Terakhir kita tambahkan style untuk bagian card-nya dengan menambahkan code berikut pada file **component/_card.scss**.
+Terakhir kita tambahkan style untuk bagian card-nya dengan menambahkan code berikut pada file **components/_card.scss**.
 
 ```scss
 .card {
@@ -1098,7 +1098,7 @@ Pertama silahkan tambahkan code berikut setelah bagian Footer pada file **index.
   </section>
 ```
 
-Lalu tambahkan code berikut pada bagian file **component/_section.scss** setelah class `&-price {` di bagian bawah file.
+Lalu tambahkan code berikut pada bagian file **components/_section.scss** setelah class `&-price {` di bagian bawah file.
 
 ```scss
   &-copyright {
@@ -1117,11 +1117,11 @@ Sebagai tambahan agar desain kita sesuai dengan tampilan desain mobile, kita aka
 
 Pertama silahkan buka proyek dalam mode mobile device.
 
-> Jika kamu menggunakan Google Chrome silahkan klik kanan > inspect element lalu pilih bagian **Toogle device toolbar**
+> Jika anda menggunakan Google Chrome silahkan klik kanan > inspect element lalu pilih bagian **Toogle device toolbar**
 
 #### Membuat Aside & Aside Toggle
 
-Selanjutnya jika kamu perhatikan bagian navbar adalah bagian pertama yang terlihat berantakan maka dari itu, kita akan coba menghilangkan menu navbar bagian kanan atas dan akan kita pindahkan ke bagian aside di sebelah kiri. Akan ada beberapa file yang akan kita rubah, untuk pertama silahkan rubah isi dari file **component/main.scss** menjadi seperti berikut :
+Selanjutnya jika anda perhatikan bagian navbar adalah bagian pertama yang terlihat berantakan maka dari itu, kita akan coba menghilangkan menu navbar bagian kanan atas dan akan kita pindahkan ke bagian aside di sebelah kiri. Akan ada beberapa file yang akan kita rubah, untuk pertama silahkan rubah isi dari file **components/main.scss** menjadi seperti berikut :
 
 ```scss
 @import
@@ -1173,7 +1173,7 @@ Serta code berikut sebelum section <!~~ Hero ~~> :
   <section class="aside-overlay"></section>
 ```
 
-Lalu tambahkan code berikut pada bagian **.navbar** pada file **component/navbar.scss** :
+Lalu tambahkan code berikut pada bagian **.navbar** pada file **components/navbar.scss** :
 
 ```scss
   .aside-toggle {
@@ -1193,7 +1193,7 @@ Lalu tambahkan code berikut pada bagian **.navbar** pada file **component/navbar
   }
 ```
 
-Setelah itu masukan code berikut sebagai style utama pada component aside di atas pada file **component/_aside.scss** :
+Setelah itu masukan code berikut sebagai style utama pada component aside di atas pada file **components/_aside.scss** :
 
 ```scss
 // _aside.scss
@@ -1767,3 +1767,12 @@ Terakhir silahkan tambahkan code berikut pada file **js/main.js**
 
 # Penutup
 
+Akhirnya materi yang cuku panjang ini bisa saya selesaikan tepat waktu, dengan ini anda telah berhasil membuat sebuah template dari 0 serta mendukung responsive web desain dengan tambahan library. Mohon maaf bila tulisan ini terkesan "terburu-buru" karena saya sendiripun menulisnya dengan keterbatasan waktu yang saya miliki.
+
+Namun saya harap tulisan ini dapat membantu anda semua yang ingin mempelajari bagaimana proses slicing dan templating dari awal hingga akhir, sekiranya ada kesalahan tulisan, kata atau sesuatu hal yang mengganggu silahkan chat saya via telegram @muhibbudins dan akan segera saya revisi tulisan ini.
+
+Sekian dari saya terima kasih telah bergabung bersama **UXD | PHP Indonesia**, sampai jumpa di lain kesempatan.
+
+Waasalamualaikum Wr. Wb.
+
+#### Happy coding! - Muhibbudin Suretno
