@@ -1,5 +1,0 @@
-@for $i from 1 through 6 {
-  .delay-#{$i} {
-    animation-delay: #{$i / 2}s;
-  }
-}
