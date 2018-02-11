@@ -1,48 +1,48 @@
-.blockquote {
-  text-align: center;
-  position: relative;
+// .blockquote {
+//   text-align: center;
+//   position: relative;
 
-  &:before,
-  &:after {
-    content: '';
-    width: 30px;
-    height: 30px;
-    background-image: url(../img/quote-1.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    top: -20px;
-    left: -20px;
-  }
-  &:after {
-    top: auto;
-    left: auto;
-    bottom: 20px;
-    right: 20px;
-    background-image: url(../img/quote-2.svg);
-  }
+//   &:before,
+//   &:after {
+//     content: '';
+//     width: 30px;
+//     height: 30px;
+//     background-image: url(../img/quote-1.svg);
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     position: absolute;
+//     top: -20px;
+//     left: -20px;
+//   }
+//   &:after {
+//     top: auto;
+//     left: auto;
+//     bottom: 20px;
+//     right: 20px;
+//     background-image: url(../img/quote-2.svg);
+//   }
 
-  &-user {
-    display: flex;
-    width: 40%;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-  &-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    margin-right: 20px;
+//   &-user {
+//     display: flex;
+//     width: 40%;
+//     margin: 0 auto;
+//     margin-top: 20px;
+//   }
+//   &-avatar {
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50%;
+//     overflow: hidden;
+//     position: relative;
+//     margin-right: 20px;
 
-    img {
-      position: absolute;
-      width: auto;
-      height: 40px;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-  }
-}
+//     img {
+//       position: absolute;
+//       width: auto;
+//       height: 40px;
+//       top: 50%;
+//       left: 50%;
+//       transform: translateX(-50%) translateY(-50%);
+//     }
+//   }
+// }
