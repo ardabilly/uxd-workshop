@@ -1,0 +1,42 @@
+// Hoverable Mixin
+@mixin hoverable() {
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    border: 1px solid $blue;
+    background-color: darken($blue, 4%);
+  }
+}
+
+.btn {
+  padding: 10px 32px;
+  border-radius: 30px;
+  border: 1px solid $blue;
+
+  @include breakpoint(0, 480px) {
+    padding: 8px 28px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  &-info {
+    background-color: $blue;
+
+    @include hoverable();
+  }
+  &-outline {
+    &-info {
+      background-color: transparent;
+      color: $blue;
+  
+      @include hoverable();
+    }
+    &-white {
+      background-color: transparent;
+      border-color: $white;
+      color: $white;
+  
+      @include hoverable();
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  &-item {
+    width: calc(100% / 3);
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+
+    @include breakpoint(0, 768px) {
+      width: calc(100% / 2);
+      height: 250px;
+    }
+    @include breakpoint(0, 480px) {
+      height: 190px;
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+      height: auto;
+      transition: all 0.8s ease;
+
+      @include breakpoint(0, 480px) {
+        transform: scale(1.6) translateX(-30%) translateY(-30%);
+      }
+    }
+    &:hover > .grid-overlay {
+      opacity: 1;
+    }
+    &:hover > img {
+      filter: grayscale(100);
+      transform: scale(1.2) translateX(-40%) translateY(-40%);
+
+      @include breakpoint(0, 480px) {
+        transform: scale(1.8) translateX(-30%) translateY(-30%);
+      }
+    }
+  }
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: transparentize($black, 0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 60px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    @include breakpoint(0, 480px) {
+      padding: 0;
+    }
+  }
+  &-title {
+    font-size: 28px;
+
+    @include breakpoint(0, 480px) {
+      font-size: 18px;
+    }
+  }
+  &-description {
+    font-size: 14px;
+    margin: 20px 0;
+
+    @include breakpoint(0, 480px) {
+      display: none;
+    }
+  }
+}

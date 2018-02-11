@@ -1,0 +1,29 @@
+@import
+
+// core
+'core/responsive',
+'core/color',
+'core/fonts',
+'core/text',
+'core/animate',
+
+// components
+'components/navbar',
+'components/section',
+'components/button',
+'components/card',
+'components/countdown',
+'components/blockquote',
+'components/grid',
+'components/aside';
+
+// global style
+body {
+  font-family: $quicksand;
+  font-size: 16px;
+  background-color: $dark;
+
+  @include breakpoint(0, 480px) {
+    font-size: 14px;
+  }
+}

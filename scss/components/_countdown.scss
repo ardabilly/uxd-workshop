@@ -1,0 +1,29 @@
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(0, 480px) {
+    margin-top: 20px;
+  }
+  &-item {
+    font-size: 64px;
+    line-height: 1.2;
+
+    @include breakpoint(0, 480px) {
+      font-size: 32px;
+    }
+  }
+  &-text {
+    font-size: 14px;
+  }
+  &-separator {
+    font-size: 36px;
+    margin: 0 20px;
+
+    @include breakpoint(0, 480px) {
+      margin: 0 10px;
+      font-size: 28px;
+    }
+  }
+}

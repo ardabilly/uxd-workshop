@@ -1,0 +1,56 @@
+.blockquote {
+  text-align: center;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/quote-1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+
+    @include breakpoint(0, 480px) {
+      content: none;
+    }
+  }
+  &:after {
+    top: auto;
+    left: auto;
+    bottom: 20px;
+    right: 20px;
+    background-image: url(../img/quote-2.svg);
+  }
+
+  &-user {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    @include breakpoint(0, 480px) {
+      width: 60%;
+    }
+  }
+  &-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-right: 20px;
+
+    img {
+      position: absolute;
+      width: auto;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}

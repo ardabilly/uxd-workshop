@@ -1,0 +1,30 @@
+.text {
+  font-family: $quicksand;
+  font-size: 14px;
+  color: transparentize($white, 0.2);
+  font-weight: 300;
+
+  &-small {
+    font-size: 16px;
+  }
+  &-medium {
+    font-size: 20px;
+  }
+  &-large {
+    font-size: 24px;
+  }
+  &-xlarge {
+    font-size: 36px;
+
+    @include breakpoint(0, 480px) {
+      font-size: 28px;
+    }
+  }
+  &-huge {
+    font-size: 64px;
+  }
+  &-icon {
+    font-size: 32px;
+    color: transparentize($white, 0.2);
+  }
+}
