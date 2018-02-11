@@ -8,7 +8,7 @@ Sebelumnya perkenalkan nama saya **Muhibbudin Suretno** founder dan admin group 
 
 Dan pada workshop pertama ini saya akan membawakan materi mengenai **Design To HTML**, dengan fokus pada pembuatan struktur template dan responsive web design.
 
-##### Tentang Tema
+#### Tentang Tema
 
 Di desain kali ini saya membawa sebuah ide mengenai Studio Foto bernama **The Photograph** yang pada dasarnya adalah hasil research saya pada seorang teman yang memiliki usaha di bidang Photo Studio dan saya cukup banyak mendapatkan insight darinya terutama fitur apa saja yang biasa–nya orang butuhkan pada sebuah studio foto.
 
@@ -125,6 +125,8 @@ Dan pada proyek ini saya telah menambahkan beberapa _helper_ yang akan membantu 
 - Fonts variable
 - Responsive utility
 - Text utility
+
+# Mulai Mengerjakan Proyek
 
 #### Membuat Navbar
 
@@ -615,27 +617,504 @@ Dan hasilnya adalah seperti berikut ini.
 
 #### Membuat Section Promotion
 
+Selanjutnya kita buat bagian promotion yang berisi countdown seperti gambar di bawah ini dan pada bagian ini pun kita akan menambahkan banyak code pada file terpisah, jadi usahakan perhatikan baik-baik dimana seharusnya kita menambahkan code yang bersangkutan.
+
 ![Promotion](_media/Promotion.jpg)
+
+Pertama kita tambahkan markup HTML pada file **index.html** yang isinya adalah seperti berikut.
+
+```html
+  <!-- Voucher -->
+  <section class="section section-overlay section-overlay-voucher">
+    <div class="container">
+      <div class="row">
+        <div class="col-9 mx-auto text-center">
+          <div class="text-xlarge mb-4">Monthly Promotion</div>
+          <p class="text">Consequatur eius ullam fugiat illo laborum similique repellat quisquam ut. <br> Aut debitis  quam quas  voluptatibus.</p>
+          <div class="countdown"></div>
+          <div class="section-overlay-button">
+            <a href="#" class="btn btn-info">Get Voucher</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+```
+
+Selanjutnya kita tambahkan fungsi javascript untuk menjalankan countdown pada bagian `<div class="countdown"></div>` , silahkan copy paste code berikut ini dan masukan kedalam file **js/main.js**.
+
+```javascript
+$(document).ready(function() {
+
+  // Start Countdown
+  var endDate = "June 30, 2018 00:00:00";
+  $('.countdown').countdown({
+    date: endDate,
+    render: function(data) {
+      $(this.el).html(
+        "<div class=\"countdown-item\">" + 
+          this.leadingZeros(data.days, 3) + " <div class=\"countdown-text\">Days</div>"+
+        "</div>"+
+        "<div class=\"countdown-separator\">:</div>"+
+        "<div class=\"countdown-item\">" + 
+          this.leadingZeros(data.hours, 2) + " <div class=\"countdown-text\">Hours</div>"+
+        "</div>"+
+        "<div class=\"countdown-separator\">:</div>"+
+        "<div class=\"countdown-item\">" + 
+          this.leadingZeros(data.min, 2) + " <div class=\"countdown-text\">Minutes</div>"+
+        "</div>"+
+        "<div class=\"countdown-separator\">:</div>"+
+        "<div class=\"countdown-item\">" + 
+          this.leadingZeros(data.sec, 2) + " <div class=\"countdown-text\">Seconds</div>"+
+        "</div>"
+      );
+    }
+  });
+
+});
+```
+
+Dan hasilnya adalah seperti berikut, masih kurang rapi dan bagian backgroundnya pun masih salah.
+
+![Voucher Before](_media/voucher-before.png)
+
+Maka dari itu kita tambahkan beberapa style pada file **components/_countdown.scss** seperti berikut ini.
+
+```scss
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-item {
+    font-size: 64px;
+    line-height: 1.2;
+  }
+  &-text {
+    font-size: 14px;
+  }
+  &-separator {
+    font-size: 36px;
+    margin: 0 20px;
+  }
+}
+```
+
+Lalu bagian **section** juga kita rubah sedikit dengan menambahkan code berikut setelah bagian **&-button** pada class _.section-overlay_.
+
+```scss
+    &-voucher {
+      min-height: 400px;
+      height: auto;
+      background-image: url(../img/bg-promotion.jpeg);
+
+      &:before {
+        background-color: transparentize($dark, 0.25);
+      }
+      p {
+        margin: 0;
+      }
+    }
+```
+
+Dan hasilnya adalah seperti berikut ini, tampak lebih rapi dan sesuai dengan desain yang telah kita buat.
+
+![Voucher After](_media/voucher-after.png)
+
+<!-- Divider -->
+<p align="center">:wavy_dash::wavy_dash::wavy_dash::wavy_dash:</p>
+<!-- Divider -->
+
 
 #### Membuat Section Prices
 
+Selanjutnya yang akan kita buat adalah bagian prices, dimana bagian ini kita membuat table pricing dari setiap paket foto yang dimiliki oleh **The Photograph** kira-kira tampilannya seperti berikut.
+
 ![Prices](_media/Prices.jpg)
+
+Lalu untuk pertama silahkan tambahkan code HTML berikut setelah bagian **voucher**.
+
+```html
+<section class="section section-price">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 text-center section section-overlay-price">
+          <div class="section-overlay-inner">
+            <div class="text-xlarge mb-4">Table Prices</div>
+            <p class="animated delay-1 fadeInUp">Ullam fugiat illo laborum similique repellat <br> quisquam ut aut debitis  quam quas <br> voluptatibus.</p>
+          </div>
+        </div>
+        <div class="col-8 p-5 text-center">
+          <div class="card-list">
+              <div class="card card-active" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Standard Plan</h5>
+                  <div class="card-subtitle">(Recommended)</div>
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      Odit hic iste nihil
+                    </li>
+                    <li class="nav-item">
+                      Quas perferendis totam fuga
+                    </li>
+                    <li class="nav-item">
+                      Eveniet qui ex assumenda eligendi
+                    </li>
+                    <li class="nav-item">
+                      Enim similique quasi nam fugiat
+                    </li>
+                    <li class="nav-item">
+                      Suscipit perspiciatis distinctio
+                    </li>
+                  </ul>
+                  <a href="#" class="btn btn-info">IDR 350K</a>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Exclusive Plan</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      Odit hic iste nihil
+                    </li>
+                    <li class="nav-item">
+                      Quas perferendis totam fuga
+                    </li>
+                    <li class="nav-item">
+                      Eveniet qui ex assumenda eligendi
+                    </li>
+                    <li class="nav-item">
+                      Enim similique quasi nam fugiat
+                    </li>
+                    <li class="nav-item">
+                      Suscipit perspiciatis distinctio
+                    </li>
+                    <li class="nav-item">
+                      Eos Natus reiciendis praesentium
+                    </li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-info">IDR 600K</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+```
+
+Dan kira-kira seperti ini hasilnya.
+
+![Price Before](_media/price-before.png)
+
+Selanjutnya kita tambahkan code berikut di dalam code **&-overlay** pada file **component/_section.scss** untuk membuat overlay pada bagian sebelah kiri.
+
+```scss
+    &-price {
+      min-height: 400px;
+      height: auto;
+      background-image: url(../img/bg-price.jpeg);
+      background-position: center;
+      padding: 60px 0;
+      z-index: -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: transparentize($dark, 0.4);
+        z-index: -1;
+      }
+      p {
+        margin: 0;
+      }
+    }
+```
+
+Serta tambahkan juga code berikut setelah code **&-overlay** pada file **component/_section.scss** untuk menghilangkan padding pada bagian section price.
+
+```scss
+  &-price {
+    padding: 0;
+  }
+```
+
+Terakhir kita tambahkan style untuk bagian card-nya dengan menambahkan code berikut pada file **component/_card.scss**.
+
+```scss
+.card {
+  background-color: transparentize($white, 0.85);
+  border-radius: 12px;
+  margin: 0.5rem;
+  padding: 18px 8px;
+  
+  &-active {
+    padding: 30px 8px;
+    background-color: transparentize($white, 0.6);
+  }
+  &-list {
+    display: flex;
+    align-items: center;
+  }
+  &-title {
+    color: $blue;
+  }
+  &-subtitle {
+    font-size: 15px;
+    color: transparentize($white, 0.25);
+  }
+
+  .nav {
+    min-height: 290px;
+    margin-top: 30px;
+
+    &-item {
+      padding: 12px 0;
+      font-size: 14px;
+      border-bottom: 1px solid transparentize($white, 0.85);
+    }
+    &-item:last-child {
+      border: 0;
+      margin-bottom: 20px;
+    }
+  }
+}
+```
+
+Dan hasilnya adalah seperti berikut.
+
+![Price After](_media/price-after.png)
+
+<!-- Divider -->
+<p align="center">:wavy_dash::wavy_dash::wavy_dash::wavy_dash:</p>
+<!-- Divider -->
 
 #### Membuat Section Client Says
 
+Selanjutnya adalah bagian client says, dimana ini adalah bagian testimony dari para customer yang menggunakan jasa **The Photograph**
+
 ![ClientSays](_media/ClientSays.jpg)
+
+Kita bisa mulai dengan menambahkan code HTML berikut pada file **index.html**
+
+```html
+  <!-- Client Says -->
+  <section class="section section-overlay section-overlay-client">
+    <div class="container">
+      <div class="row">
+        <div class="col-7 mx-auto text-center">
+          <div class="text-xlarge mb-4">Client Says</div>
+          <div class="blockquote">
+            <p class="text">Neque quia iure amet ad nemo, ex! Porro, totam corporis fugit aliquam assumenda, alias omnis adipisci voluptatum voluptas maiores facere ducimus velit. Nihil corporis commodi tempore doloremque assumenda, rerum! Ipsa voluptatibus ratione, reprehenderit explicabo, ad distinctio, voluptates alias, numquam fuga animi vel dolores minima. Dolorum similique, maxime voluptatum rerum eius beatae.</p>
+            <div class="blockquote-user">
+              <div class="blockquote-avatar">
+                  <img src="img/client.jpeg" alt="Bae Hyo-Rin">
+              </div>
+              <div>Bae Hyo-Rin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+```
+
+Lalu kita tambahkan style untuk bagian ini agar lebih rapi, silahkan copy paste code berikut dan tambahkan pada bagian **&-overlay** pada file **components/_section.scss**.
+
+```scss
+    &-client {
+      min-height: 400px;
+      height: auto;
+      background-image: url(../img/bg-client.jpeg);
+      background-position: center;
+
+      &:before {
+        background-color: transparentize($dark, 0.25);
+      }
+      p {
+        margin: 0;
+      }
+    }
+```
+
+Serta tambahkan code berikut ke dalam file **components/_blockquote.scss* untuk mempercantik bagian block quote dan avatar customer–nya.
+
+```scss
+.blockquote {
+  text-align: center;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/quote-1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+  }
+  &:after {
+    top: auto;
+    left: auto;
+    bottom: 20px;
+    right: 20px;
+    background-image: url(../img/quote-2.svg);
+  }
+
+  &-user {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  &-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-right: 20px;
+
+    img {
+      position: absolute;
+      width: auto;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+```
+
+Dan hasilnya adalah seperti berikut ini.
+
+![Client Says](_media/client-says.png)
+
+<!-- Divider -->
+<p align="center">:wavy_dash::wavy_dash::wavy_dash::wavy_dash:</p>
+<!-- Divider -->
+
 
 #### Membuat Section Footer
 
+Lalu di bagian ini kita akan membuat sebuah menu navigasi tambahan di bagian bawah halaman yaitu menu footer.
+
 ![Footer](_media/Footer.jpg)
+
+Code-nya cukup simple kalian hanya cukup menambahkan code berikut pada file **index.html** setelah bagian client says.
+
+```html
+  <!-- Footer -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="text-medium mb-3">About Us</div>
+          <p class="text">Exercitationem culpa alias et sint minus, repellat error reprehenderit ipsum ipsam voluptates quaerat. Expedita sapiente a quidem adipisci porro et, reprehenderit laborum. Ipsam minus hic nostrum voluptatum dolores ipsa voluptatibus dignissimos, voluptate distinctio quasi nam libero cupiditate quisquam, id itaque, harum ab asperiores. Reiciendis?</p>
+        </div>
+        <div class="col-4">
+          <div class="text-medium mb-3 ml-3">Our Services</div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Repellat error reprehenderit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Ipsum ipsam voluptates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Quaerat expedita sapiente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Quidem adipisci porro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Reprehenderit laborum</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text text-white" href="#">Ipsam minus hic nostrum</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <div class="text-medium mb-3 ml-3">Social Account</div>
+          <nav class="nav p0 m0">
+            <a class="nav-link nav-social text-icon" href="#">
+              <i class="ion-social-facebook"></i>
+            </a>
+            <a class="nav-link nav-social text-icon" href="#">
+              <i class="ion-social-instagram"></i>
+            </a>
+            <a class="nav-link nav-social text-icon" href="#">
+              <i class="ion-social-pinterest"></i>
+            </a>
+            <a class="nav-link nav-social text-icon" href="#">
+              <i class="ion-social-twitter"></i>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+```
+
+Dan kita telah selesai menambahkan menu footer seperti di bawah ini.
+
+![Footer](_media/footer.png)
+
+<!-- Divider -->
+<p align="center">:wavy_dash::wavy_dash::wavy_dash::wavy_dash:</p>
+<!-- Divider -->
+
 
 #### Membuat Copyright
 
+Dan bagian terakhir adalah section copyright yang berada pada bagian bawah halaman dan kira-kira tampilannya seperti ini.
+
 ![Copyright](_media/Copyright.jpg)
 
-#### Kesimpulan
+Pertama silahkan tambahkan code berikut setelah bagian Footer pada file **index.html**.
 
-![Full Page](_media/Desktop.jpg)
+```html
+  <!-- Copyright -->
+  <section class="section section-copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-9 mx-auto text-center">
+          <p class="text">Copyright 2018 - Made with ♥ by Muhibbudin Suretno</p>
+        </div>
+      </div>
+    </div>
+  </section>
+```
 
-#### Penutup
+Lalu tambahkan code berikut pada bagian file **component/_section.scss** setelah class `&-price {` di bagian bawah file.
+
+```scss
+  &-copyright {
+    min-height: 40px;
+    height: auto;
+    padding: 40px 0 20px 0;
+    background-color: $black;
+  }
+```
+
+Dan akhirnya kita telah selesai membuat sebuah halaman sesuai dengan desain yang telah di buat. :smile:
+
+# Memperbaiki Responsive Design
+
+Sebagai tambahan agar desain kita sesuai dengan tampilan desain mobile, kita akan coba merapikan bagian template untuk bagian mobile. Pertama silahkan buka proyek dalam mode mobile device.
+
+> Jika kamu menggunakan Google Chrome silahkan klik kanan > inspect element lalu pilih bagian **Toogle device toolbar**
+
+# Penutup
 
