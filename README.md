@@ -16,11 +16,11 @@ Proyek ini adalah *core skeleton* untuk workshop **UXD | PHP Indonesia** dan ske
 
 ### Dokumentasi
 
-Untuk dokumentasi workshop ini akan di share melalui [link berikut](/).
+Untuk dokumentasi workshop ini silahkan lihat [link berikut](https://muhibbudins.github.io/uxd-workshop-docs/).
 
 ### Persiapan
 
-Pertama-pertama pastikan bahwa anda telah memasang Ruby & Ruby SASS pada komputer / laptop anda. Silahkan ikuti langkah-langkah pada [*slide* berikut](/)
+Pertama-pertama pastikan bahwa anda telah memasang Ruby & Ruby SASS pada komputer / laptop anda. Silahkan ikuti langkah-langkah pada https://www.ruby-lang.org/id/documentation/installation/
 
 ### Cara penggunaan
 
